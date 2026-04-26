@@ -6735,6 +6735,27 @@
   }
 }
 
+
+
+    /* PRODUCAO SEM IA: esconde VetyAI/Ollama porque nao funciona no Render sem backend de IA online. */
+    [data-ai-shortcut],
+    .ai-header-chip,
+    #aiChatFab,
+    #aiChatPanel,
+    .ai-chat-fab,
+    .ai-chat-panel,
+    #subjectSupportTabVety,
+    #detailTutorActions,
+    #vetyTrainingNudge,
+    #flashAskVetyBtn,
+    #flashMobileHintBtn,
+    #simulationAnswerAskAiBtn,
+    [data-study-plan-ai],
+    .detail-vety-chips,
+    .ai-chat-quick-actions{
+      display:none !important;
+    }
+
 </style>
 </head>
 <body spellcheck="false">
@@ -6746,7 +6767,7 @@
         <div>
           <div class="onboarding-kicker">Primeira entrada</div>
           <h2 id="onboardingTitle">Monte seu plano em 1 minuto.</h2>
-          <p>O VetStudy vai usar suas escolhas para organizar matérias, rotina, VetyAI e primeiros passos de estudo.</p>
+          <p>O VetStudy vai usar suas escolhas para organizar matérias, rotina e primeiros passos de estudo.</p>
         </div>
         <div class="onboarding-map" aria-label="Etapas do onboarding">
           <div class="onboarding-map-item active" data-onboarding-map="1"><span>💙</span><strong>Boas-vindas</strong></div>
@@ -6766,14 +6787,14 @@
           <div class="onboarding-hero-grid">
             <div class="onboarding-mini-card"><strong>🧠 Flashcards com direção</strong><span>Cards e revisões puxam as matérias que você escolher agora.</span></div>
             <div class="onboarding-mini-card"><strong>📝 Simulados úteis</strong><span>O modo prova já começa configurado para o seu foco.</span></div>
-            <div class="onboarding-mini-card"><strong>🤖 VetyAI no seu estilo</strong><span>Direto, detalhado ou motivador, do jeito que ajuda você.</span></div>
+            <div class="onboarding-mini-card"><strong>📚 Estudo do seu jeito</strong><span>Organize a rotina de um jeito simples para começar sem bagunça.</span></div>
           </div>
         </section>
 
         <section class="onboarding-step" data-onboarding-step="2">
           <div>
             <h3>Qual vai ser a missão?</h3>
-            <p class="onboarding-step-sub">Escolha o objetivo, o tempo real que cabe no dia e como o VetyAI deve responder quando você pedir ajuda.</p>
+            <p class="onboarding-step-sub">Escolha o objetivo, o tempo real que cabe no dia e como o VetStudy deve organizar seu começo.</p>
           </div>
           <div class="onboarding-choice-group">
             <div class="onboarding-choice-title">Objetivo principal</div>
@@ -6792,7 +6813,7 @@
             </div>
           </div>
           <div class="onboarding-choice-group">
-            <div class="onboarding-choice-title">Estilo do VetyAI</div>
+            <div class="onboarding-choice-title">Estilo de estudo</div>
             <div class="onboarding-choice-grid">
               <button class="onboarding-choice" type="button" data-onboard-vety="Explica direto"><strong>⚡ Direto</strong><span>Resposta objetiva e sem enrolar.</span></button>
               <button class="onboarding-choice" type="button" data-onboard-vety="Explica com exemplos"><strong>🔎 Com exemplos</strong><span>Mais contexto para fixar.</span></button>
@@ -6812,13 +6833,13 @@
         <section class="onboarding-step" data-onboarding-step="4">
           <div>
             <h3>Seu plano inicial ficou pronto.</h3>
-            <p class="onboarding-step-sub">Ao finalizar, a home abre com suas matérias cadastradas, sugestões de foco e VetyAI configurado para o seu estilo.</p>
+            <p class="onboarding-step-sub">Ao finalizar, a home abre com suas matérias cadastradas e sugestões de foco.</p>
           </div>
           <div class="onboarding-summary" id="onboardingSummary"></div>
           <div class="onboarding-plan-grid">
             <div class="onboarding-plan-card"><span class="big">📚</span><strong>Matérias na largada</strong><span id="onboardingPlanSubjects">3 matérias para começar sem tela vazia.</span></div>
             <div class="onboarding-plan-card"><span class="big">🧠</span><strong>Primeira missão</strong><span id="onboardingPlanMission">Responder flashcards e abrir um simulado curto.</span></div>
-            <div class="onboarding-plan-card"><span class="big">🤖</span><strong>VetyAI ajustado</strong><span id="onboardingPlanVety">Explicações do jeito que você escolheu.</span></div>
+            <div class="onboarding-plan-card"><span class="big">📌</span><strong>Rotina ajustada</strong><span id="onboardingPlanVety">Organização inicial pronta para estudar.</span></div>
           </div>
         </section>
 
@@ -6874,7 +6895,6 @@
       <div class="password-wrap"><input class="field" id="loginPass" type="password" placeholder="Senha" autocomplete="current-password" /><button class="toggle-pass" id="togglePass" type="button" aria-label="Mostrar senha">👁</button></div>
       <button class="primary-btn" id="loginBtn" type="button">Entrar</button>
       <div class="auth-divider">ou</div>
-      <button class="secondary-btn" id="demoLoginBtn" type="button">Entrar rápido</button>
       <div id="loginError"></div>
       <div class="hint">Use seu usuário e senha para continuar de onde parou.</div>
       </div>
@@ -7101,7 +7121,7 @@
       <div class="simulation-answer-summary" id="simulationAnswerSummary"></div>
       <div class="simulation-answer-list" id="simulationAnswerList"></div>
       <div class="simulation-answer-actions">
-        <button class="detail-btn ghost" id="simulationAnswerAskAiBtn" type="button">Levar dúvidas pro VetyAI</button>
+        <button class="detail-btn ghost" id="simulationAnswerAskAiBtn" type="button">Revisar dúvidas</button>
         <button class="detail-btn primary" id="simulationAnswerRestartBtn" type="button">Novo simulado</button>
       </div>
     </div>
@@ -8837,7 +8857,7 @@
             </div>
 
             <div id="calendarClosedState" class="calendar-closed-state">
-              <div class="calendar-closed-text">Comece a estudar para abrir o calendário 📚</div>
+              <div class="calendar-closed-text">No celular, o calendário já fica aberto. No computador, comece a estudar para liberar 📚</div>
             </div>
 
             <div id="calendarMode" style="display:none;">
@@ -9173,7 +9193,7 @@
               <div class="detail-support-head">
                 <div>
                   <div class="mini-title">Apoio da matéria</div>
-                  <div class="mini-sub">Slides e VetyAI em um espaço só, para a tela ficar mais leve e fácil de entender.</div>
+                  <div class="mini-sub">Slides e materiais em um espaço só, para a tela ficar mais leve e fácil de entender.</div>
                 </div>
                 <div class="subject-support-tabs" role="tablist" aria-label="Apoio da matéria">
                   <button class="support-tab-btn active" id="subjectSupportTabSlides" type="button" role="tab" aria-selected="true" onclick="switchSubjectSupportTab('slides')">Slides</button>
@@ -9220,8 +9240,8 @@
               <div class="support-tab-panel" id="subjectSupportPanelVety" role="tabpanel" aria-hidden="true">
                 <div class="subject-vety-layout">
                   <div class="subject-vety-intro">
-                    <div class="mini-title tiny">VetyAI da matéria</div>
-                    <div class="mini-sub tiny">Escolha um atalho para abrir o VetyAI com o contexto desta matéria.</div>
+                    <div class="mini-title tiny">Ajuda da matéria</div>
+                    <div class="mini-sub tiny">Atalhos de IA removidos nesta versão online.</div>
                   </div>
                   <div class="detail-vety-chips" id="detailTutorActions">
                     <button class="quick-chip" type="button" onclick="openTutorForSubject(subjectDetailCurrentKey, 'explain')">✨ Explicar</button>
@@ -9476,7 +9496,7 @@
                     <option>Slides e PDF</option>
                   </select>
                 </label>
-                <label>Preferencia do VetyAI
+                <label>Preferência de estudo
                   <select id="profileVetyStyleInput">
                     <option>Explica direto</option>
                     <option>Em topicos</option>
@@ -9595,7 +9615,7 @@
           <span class="ai-chat-title-badge logo-dog-icon" aria-hidden="true"></span>
           <span>VetyAI</span>
         </div>
-        <div class="ai-chat-subtitle">Converse com o VetyAI para revisar conteúdos, tirar dúvidas e organizar seus estudos.</div>
+        <div class="ai-chat-subtitle">Assistente removido nesta versão online.</div>
       </div>
       <div class="ai-chat-actions">
         <button class="ai-chat-icon-btn" id="aiChatClear" type="button" title="Limpar conversa">↺</button>
@@ -9604,7 +9624,7 @@
     </div>
 
     <div class="ai-chat-toolbar" id="aiChatToolbar">
-      <div class="ai-chat-mode-group" id="aiChatModeGroup" role="group" aria-label="Modo da VetyAI">
+      <div class="ai-chat-mode-group" id="aiChatModeGroup" role="group" aria-label="Modo de ajuda">
         <button class="ai-chat-chip active" type="button" data-ai-mode="fast">Rapido</button>
         <button class="ai-chat-chip" type="button" data-ai-mode="deep">Detalhado</button>
       </div>
@@ -9626,7 +9646,7 @@
         <textarea id="aiChatInput" class="ai-chat-input" rows="1" placeholder="Digite sua dúvida ou tema de estudo"></textarea>
         <button id="aiChatSend" class="ai-chat-send" type="submit">Enviar</button>
       </div>
-      <div class="ai-chat-footnote">VetyAI ajuda com estudo, revisão e organização.</div>
+      <div class="ai-chat-footnote">Assistente removido nesta versão online.</div>
     </form>
   </aside>
 
@@ -9653,7 +9673,7 @@
     const STUDY_PLANS_STORAGE_KEY = "vetstudy_study_plans_v1";
     const ACCOUNT_STORAGE_KEY = "vetstudy_local_account_v1";
     const SITE_RESET_MARKER_KEY = "vetstudy_site_reset_marker";
-    const SITE_RESET_TOKEN = "primeira-entrada-2026-04-21-v1";
+    const SITE_RESET_TOKEN = "namorada-clean-sem-ia-2026-04-26-v1";
     const ONBOARDING_VERSION = "vetstudy-onboarding-legal-v2";
     const RESET_STORAGE_KEYS = [
       "vetstudy_subjects_v1",
@@ -9678,16 +9698,16 @@
     applyOneTimeSiteReset();
 
     const DEFAULT_ACCOUNT = {
-      name: "Mateus",
-      username: "Matsszs",
-      password: "Acess",
+      name: "Estudante",
+      username: "",
+      password: "",
       course: "Medicina Veterinária",
       semester: "1º semestre",
       goal: "Criar rotina de estudos",
       studyTime: "30 minutos",
       challenge: "Falta de organização",
       studyStyle: "Flashcards",
-      vetyStyle: "Explica direto",
+      vetyStyle: "Sem IA",
       interestArea: "Clínica geral",
       studyAbout: "Quero estudar com mais constância, sem me perder no que revisar primeiro.",
       avatarImage: "",
@@ -9697,7 +9717,7 @@
       onboardingComplete: false,
       onboardingVersion: "",
       onboardingPrefs: {},
-      createdAt: "demo"
+      createdAt: "clean"
     };
 
     function normalizeAccount(account = {}){
@@ -9745,10 +9765,9 @@
     function findMatchingAccount(username, password){
       const requestedUser = String(username || "").trim().toLowerCase();
       const requestedPass = String(password || "");
-      const accounts = [loadLocalAccount(), normalizeAccount(DEFAULT_ACCOUNT)].filter(Boolean);
-      return accounts.find(account =>
-        account.username.toLowerCase() === requestedUser && account.password === requestedPass
-      ) || null;
+      const account = loadLocalAccount();
+      if(!account) return null;
+      return account.username.toLowerCase() === requestedUser && account.password === requestedPass ? account : null;
     }
 
     let activeAccount = loadLocalAccount() || normalizeAccount(DEFAULT_ACCOUNT);
@@ -9763,8 +9782,7 @@
     }
 
     function isDefaultManualLogin(username, password){
-      return String(username || "").trim().toLowerCase() === DEFAULT_ACCOUNT.username.toLowerCase() &&
-        String(password || "") === DEFAULT_ACCOUNT.password;
+      return false;
     }
 
     function getAccountInitials(){
@@ -10840,7 +10858,7 @@
       if(phase === "Reta final"){
         return [
           `Revisar os pontos mais frágeis de ${subjectLabel}${supportLabel}.`,
-          `Passar pelos flashcards essenciais e fechar dúvidas com o VetyAI se precisar.`,
+          `Passar pelos flashcards essenciais e revisar os pontos que ainda ficaram confusos.`,
           "Encerrar sem conteúdo novo e deixar a cabeça leve para a prova."
         ];
       }
@@ -10933,7 +10951,7 @@
           : "A estratégia divide o estudo em base, consolidação e revisão ativa para você não chegar na prova só lendo por cima.",
         aiSummary: safeDraft.mode === "material"
           ? "Materiais e observações entram como bússola do plano. Se quiser mais precisão, descreva o que mais cai na prova."
-          : "Esse plano já nasce funcional e pode ser refinado com o VetyAI a qualquer momento.",
+          : "Esse plano já nasce funcional e pode ser ajustado depois.",
         days
       });
     }
@@ -11267,7 +11285,7 @@
       }
       if(planSubjects) planSubjects.textContent = `${subjects.slice(0, 3).join(", ")}${subjects.length > 3 ? "..." : ""}`;
       if(planMission) planMission.textContent = onboardingState.goal.includes("provas") ? "Abrir um simulado curto e revisar os primeiros erros." : "Começar com flashcards e um ciclo de foco leve.";
-      if(planVety) planVety.textContent = `${onboardingState.vetyStyle} para tirar dúvidas sem quebrar o ritmo.`;
+      if(planVety) planVety.textContent = `Organização inicial pronta para estudar.`;
     }
 
     function setOnboardingStep(step){
@@ -12064,7 +12082,7 @@ function renderStudyPlanDetail(plan){
         </div>
       </div>
       <div class="study-plan-detail-actions">
-        <button class="detail-btn ghost small" type="button" data-study-plan-ai="${escapeHtml(plan.id)}">Ajustar no VetyAI</button>
+        <button class="detail-btn ghost small" type="button" data-study-plan-ai="${escapeHtml(plan.id)}">Ajustar plano</button>
         <button class="detail-btn ghost small" type="button" data-regenerate-study-plan="${escapeHtml(plan.id)}">Gerar de novo</button>
         <button class="detail-btn ghost small" type="button" data-delete-study-plan="${escapeHtml(plan.id)}">Excluir</button>
       </div>
@@ -12088,7 +12106,7 @@ function renderStudyPlanDetail(plan){
 
     <div class="study-plan-material-card">
       <strong>📎 Materiais e contexto</strong>
-      <span>${escapeHtml(plan.aiSummary || "Se quiser refinamento extra, abra o VetyAI com este plano já selecionado.")}</span>
+      <span>${escapeHtml(plan.aiSummary || "Plano salvo. Você pode editar e ajustar depois.")}</span>
       <div class="study-plan-material-list">
         ${plan.materials.length ? plan.materials.map(material => {
           const sessionUrl = uploadedStudyPlanFiles[plan.id]?.[material.id] || "";
@@ -14438,8 +14456,13 @@ if(logoutBtn) logoutBtn.addEventListener("click", runLogout);
       syncFlashcardsView();
     }
 
+    function isMobileCalendarMode(){
+      return window.matchMedia("(max-width: 760px)").matches;
+    }
+
     function applyCalendarVisibility(isOpen){
-      calendarUnlocked = !!isOpen;
+      const shouldOpen = !!isOpen || isMobileCalendarMode();
+      calendarUnlocked = shouldOpen;
 
       if(calendarUnlocked){
         if(calendarClosedState) calendarClosedState.style.display = "none";
@@ -14518,7 +14541,7 @@ if(logoutBtn) logoutBtn.addEventListener("click", runLogout);
         planList.innerHTML = `
           <div class="plan-item"><div class="plan-icon">📚</div><div class="plan-text">Crie sua <strong>primeira matéria</strong> para o VetStudy montar um plano real.</div></div>
           <div class="plan-item"><div class="plan-icon">🎯</div><div class="plan-text">Depois disso, a home mostra somente as matérias que você cadastrou.</div></div>
-          <div class="plan-item"><div class="plan-icon">🤖</div><div class="plan-text">O VetyAI usa essas matérias para sugerir revisão, foco e simulados.</div></div>
+          <div class="plan-item"><div class="plan-icon">🤖</div><div class="plan-text">O VetStudy usa essas matérias para organizar revisão, foco e simulados.</div></div>
         `;
         return;
       }
@@ -16988,7 +17011,7 @@ function pickTwo(){
     });
 
     btnProvas.addEventListener("click", () => {
-      if(!calendarUnlocked){
+      if(!calendarUnlocked && !isMobileCalendarMode()){
         applyCalendarVisibility(false);
         showToast("Clique em Começar a estudar para liberar o calendário 📚");
         return;
@@ -17003,7 +17026,7 @@ function pickTwo(){
     });
 
     btnProgress.addEventListener("click", () => {
-      if(!calendarUnlocked){
+      if(!calendarUnlocked && !isMobileCalendarMode()){
         applyCalendarVisibility(false);
         showToast("Clique em Começar a estudar para liberar o calendário 📚");
         return;
@@ -17022,6 +17045,7 @@ function pickTwo(){
     renderCalendar(now.getMonth());
     renderMonthEventsList(now.getMonth());
     applyCalendarVisibility(false);
+    window.addEventListener("resize", () => applyCalendarVisibility(calendarUnlocked));
   
 
     const aiChatFab = document.getElementById("aiChatFab");
